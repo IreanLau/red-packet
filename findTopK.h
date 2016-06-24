@@ -53,8 +53,13 @@ void findTopK(int *a,int size,int k)
 
 	for(int i=k;i<size;++i)
 	{
-		a[0]=a[i];
-		AdjustDown(a,k,0);
+                if(a[i]>a[0])
+                 {
+                     swap(a[0],a[i]);
+                     for(int i = (k-2)/2; i>=0;--i)
+		         AdjustDown(a,k,i);
+                 }
+		
 	}
 
 	cout<<"top K is:>"<<endl;
